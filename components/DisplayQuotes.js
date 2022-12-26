@@ -13,17 +13,16 @@ const CardUI = ({title}) => {
       </View>
       <View style={styles.actionBtns}>
         <View>
-          <Text style={styles.actionBtnsText}>L</Text>
-          <Icon name="caret-up-outline" size={20} color='black'/>
+          <Icon name="thumbs-up-outline" size={30} color='black'/>
         </View>
         <View>
-          <Text style={styles.actionBtnsText}>D</Text>
+        <Icon name="download-outline" size={30} color='black'/>
         </View>
         <View>
-          <Text style={styles.actionBtnsText}>C</Text>
+        <Icon name="copy-outline" size={30} color='black'/>
         </View>
         <View>
-          <Text style={styles.actionBtnsText}>S</Text>
+        <Icon name="share-social-outline" size={30} color='black'/>
         </View>
       </View>
     </View>
