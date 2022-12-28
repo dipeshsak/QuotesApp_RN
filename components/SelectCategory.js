@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {
-  Button,
   View,
   Text,
   FlatList,
@@ -8,73 +7,97 @@ import {
   Pressable,
 } from 'react-native';
 
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+
+let isMarathi = true
+
 const DATA = [
   {
     id: 'gm',
-    title: 'Good Morning',
+    title: isMarathi ? 'शुभ सकाळ' :'Good Morning',
+    name:'weather-sunny',
+    color:'#ffe87c'
   },
   {
     id: 'gn',
-    title: 'Good Night',
+    title: isMarathi ? 'शुभ रात्री' : 'Good Night',
+    name:'weather-night',
+    color:'#fefcd7'
   },
   {
     id: 'hbd',
-    title: 'Happy Birthday',
+    title: isMarathi ? 'वाढदिवसाच्या शुभेच्छा' : 'Happy Birthday',
+    name:'baby-face-outline',
+    color:'#ffdbbb'
   },
   {
     id: 'ha',
-    title: 'Happy Anniversary',
+    title: isMarathi ? 'लग्नाचा वाढदिवस' :'Happy Anniversary',
+    name:'cake',
+    color:'#fc5a8d'
   },
   {
     id: 'fam',
-    title: 'Family',
+    title: isMarathi ? 'कुटुंब' :'Family',
+    name:'human-male-female-child',
+    color:'#909eb4'
   },
   {
     id: 'mot',
-    title: 'Motivational',
+    title: isMarathi ? 'प्रेरणादायी' : 'Motivational',
+    name:'heart-flash',
+    color:'red'
   },
   {
     id: 'bus',
-    title: 'Business',
+    title: isMarathi ? 'व्यवसाय' :'Business',
+    name:'cash-multiple',
+    color:'#25d366'
   },
   {
     id: 'frd',
-    title: 'Friend',
+    title: isMarathi ? 'मैत्री' :'Friend',
+    name:'crowd',
+    color:'#e8c5c1'
   },
   {
     id: 'suc',
-    title: 'Success',
+    title: isMarathi ? 'यश' :'Success',
+    name:'weight-lifter',
+    color:'orange'
   },
   {
     id: 'oth',
-    title: 'Other',
+    title: isMarathi ? 'इतर' :'Other',
+    name:'emoticon-happy',
+    color:'#ffc964'
   },
 ];
 
-const Item = ({title, navigation}) => (
+const Item = ({title,name,color, navigation}) => (
   <Pressable onPress={() => navigation.navigate('Quote Page', {name: title})}>
     <View style={styles.item}>
-      <Text
+      <View
         style={{
           color: '#000',
           height: '50%',
-          backgroundColor: 'red',
+           backgroundColor: 'black',
           width: '100%',
           borderTopRightRadius: 8,
           borderTopLeftRadius: 8,
+          alignItems:'center',
+          justifyContent:'center'
         }}>
-        ICON
-      </Text>
-      {/* <View style={{backgroundColor:'red'}}> */}
+        <MaterialCommunityIcons name={name} color={color} size={60} />
+      </View>
       <Text style={styles.title}>{title}</Text>
-      {/* </View> */}
     </View>
   </Pressable>
 );
 
 const SelectCategory = ({navigation}) => {
   const renderItem = ({item}) => (
-    <Item title={item.title} navigation={navigation} />
+    <Item title={item.title} name={item.name} color={item.color} navigation={navigation} />
   );
 
   return (
@@ -85,11 +108,6 @@ const SelectCategory = ({navigation}) => {
         justifyContent: 'center',
         backgroundColor: '#ccc',
       }}>
-      {/* <Text style={{color:'#000'}}>Select Category</Text> */}
-      {/* <Button
-          title="Go to Details"
-          onPress={() => navigation.navigate('Details')}
-        /> */}
       <FlatList
         data={DATA}
         numColumns={2}
@@ -121,7 +139,6 @@ const styles = StyleSheet.create({
     width: '100%',
     borderBottomLeftRadius: 8,
     borderBottomRightRadius: 8,
-    // textAlign:'left'
   },
 });
 
