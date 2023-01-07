@@ -17,15 +17,6 @@ function HomeScreen({ navigation }) {
   );
 }
 
-function DetailsScreen({route}) {
-  console.log("DETAILS",route.params)
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text style={{color: 'black'}}>{route.params.name}</Text>
-    </View>
-  );
-}
-
 const Stack = createNativeStackNavigator();
 
 function App() {

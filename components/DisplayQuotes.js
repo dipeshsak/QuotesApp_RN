@@ -1,9 +1,24 @@
-import {View, Text, StyleSheet, FlatList} from 'react-native';
+import {View, Text, StyleSheet, FlatList, Share, useState, ToastAndroid} from 'react-native';
+import Clipboard from '@react-native-clipboard/clipboard';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 let testData =
   'आयुष्यात जिंकाल तर असे जिंका, कि जणू जिंकण्याची सवयच आहे, आणि हराल तर असे हरा कि जिंकून कंटाळा आल्याने गंमत म्हणून हरलो आहे.';
 
+// const [data, setData] = useState("");
+// const [clickOnShare,setClickOnShare] = useState(1);
+const shareQuote = () => {
+
+Share.share({
+  message:"“ "+testData +" ” --  "+"निनावी",
+  uri:'https://play.google.com/store/apps/details?id=com.amazinginventos.managetodos'
+})
+}
+
+const copyToClipboard = () => {
+  Clipboard.setString(testData);
+  ToastAndroid.show("Text Copied !", ToastAndroid.SHORT);
+}
 const CardUI = ({title}) => {
   return (
     <View style={styles.cardView}>
@@ -19,10 +34,10 @@ const CardUI = ({title}) => {
         <Icon name="download-outline" size={30} color='black'/>
         </View>
         <View>
-        <Icon name="copy-outline" size={30} color='black'/>
+        <Icon name="copy-outline" size={30} color='black' onPress={copyToClipboard}/>
         </View>
         <View>
-        <Icon name="share-social-outline" size={30} color='black'/>
+        <Icon name="share-social-outline" size={30} color='black' onPress={shareQuote}/>
         </View>
       </View>
     </View>
@@ -34,11 +49,10 @@ const DisplayQuotes = ({route, navigation}) => {
 
   const renderItem = ({item}) => <CardUI title={item} />;
 
-  console.log('NAVIGATION', name);
   return (
     <View style={styles.container}>
       <FlatList
-        data={[1, 2, 3, 4, 5]}
+        data={[{name:1},{name:2},{name:3},{name:4},{name:5}]}
         renderItem={renderItem}
         keyExtractor={item => item.name}
       />
